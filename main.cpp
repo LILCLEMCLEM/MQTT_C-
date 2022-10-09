@@ -6,16 +6,13 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-	char t[] = {"hello_world"};
-	MQTT_ROUTER test("192.168.0.22" , "1883", "clement");
-	test.SubscribeOnTerm("test" , 2 );
+	char str[] = {"hello_world"};  	//idk why but space don't work actually
+	MQTT_ROUTER test("192.168.0.22" , "1883", "test"); // (address , (unused)port , user) 
+	test.SubscribeOnTerm("/example" , 2 );	//subscribe on a new terminal  (qos is unused)
 	std::string wait;
 	std::getline(std::cin, wait);
-	std::string text;
 	
-
-	
-	test.Publish("test" , t , 2);
+	test.Publish("/example" , str , 2); //(topic , message , (unused)qos)
 
 	std::getline(std::cin, wait);
 }
